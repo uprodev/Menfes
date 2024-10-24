@@ -1314,6 +1314,7 @@ figure {
 .banner-home .banner-image figure {
   position: relative;
   z-index: 2;
+  background-color: var(--bs-terciary);
   -webkit-mask: url(../images/bgi/mask4.png) center bottom/454px auto no-repeat;
   mask: url(../images/bgi/mask4.png) center bottom/454px auto no-repeat;
   margin: 0;
@@ -1503,9 +1504,9 @@ figure {
     width: 527px;
   }
   .banner-home .banner-image:after {
-    width: 463px;
+    width: 491px;
     height: 778px;
-    right: 345px;
+    right: 315px;
     top: auto;
   }
   .banner-home .banner-text {
@@ -1761,6 +1762,9 @@ figure {
   }
   .s-text-image-masked .text h2 {
     max-width: 10.2em;
+  }
+  .s-text-image-masked--img-right .row {
+    flex-direction: row-reverse;
   }
 }
 @media (min-width: 992px) {
@@ -2342,8 +2346,7 @@ figure {
 }
 @media (min-width: 1420px) {
   .s-text-images:before {
-    width: 1458px;
-    height: 800px;
+    height: 100%;
     padding: 0;
     background-size: cover;
   }
