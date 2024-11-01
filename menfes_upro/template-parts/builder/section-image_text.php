@@ -2,7 +2,7 @@
 if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
-	<section class="section s-text-image-masked bg-waves<?= $image_right_left == 'Right' ? ' s-text-image-masked--img-right' : '' ?>">
+	<section class="section s-text-image-masked<?php if($is_waves) echo ' bg-waves'; if($image_right_left == 'Right') echo ' s-text-image-masked--img-right'; ?>">
 		<div class="container-fluid">
 			<div class="row justify-content-between">
 				<div class="col-md-6 col-lg-5 p-xl-0">

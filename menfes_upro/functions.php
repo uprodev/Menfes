@@ -3,6 +3,7 @@
 // show_admin_bar( false );
 
 require_once 'inc/cpt.php';
+require_once 'inc/ajax.php';
 
 add_action('wp_enqueue_scripts', 'load_style_script');
 function load_style_script(){
@@ -17,6 +18,7 @@ function load_style_script(){
     wp_enqueue_script('my-lenis', get_stylesheet_directory_uri() . '/js/lenis.js', array(), false, true);
     wp_enqueue_script('my-swiper', get_stylesheet_directory_uri() . '/js/swiper-bundle.min.js', array(), false, true);
     wp_enqueue_script('my-main', get_stylesheet_directory_uri() . '/js/main.js', array(), false, true);
+    wp_enqueue_script('my-add', get_stylesheet_directory_uri() . '/js/add.js', array(), false, true);
 }
 
 

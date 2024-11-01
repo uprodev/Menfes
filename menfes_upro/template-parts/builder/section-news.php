@@ -3,8 +3,9 @@ if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
 	<?php 
+	$post_type = 'blog';
 	$args = array(
-		'post_type' => 'post', 
+		'post_type' => $post_type, 
 		'posts_per_page' => -1, 
 	);
 
@@ -49,7 +50,7 @@ if($args['row']):
 
 						<?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
 							<div class="swiper-slide">
-								<?php get_template_part('parts/content', 'post') ?>
+								<?php get_template_part('parts/content', $post_type) ?>
 							</div>
 						<?php endwhile; ?>
 

@@ -933,6 +933,16 @@ figure {
 .lang-wrapper ul li:not(:last-child) {
   margin: 0 0 10px;
 }
+.lang-wrapper ul a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background-color: #fff;
+  border: 1px solid var(--bs-primary);
+  border-radius: 100%;
+}
 .navbar-toggler {
   align-self: center;
   padding: 0 25px;
@@ -2604,10 +2614,14 @@ figure {
   line-height: 27px;
   margin: 0;
 }
-.s-contact .text address a {
-  color: var(--bs-primary);
+.s-contact .text address p {
+  margin: 0;
 }
-.s-contact .text address a:hover {
+.s-contact .text address p a {
+  color: var(--bs-primary);
+  text-decoration: underline;
+}
+.s-contact .text address p a:hover {
   text-decoration: none;
 }
 .s-contact .form-wrapper {
@@ -3099,7 +3113,7 @@ figure {
 .s-details .details-box .details-quote h3 {
   margin: 0 0 20px;
 }
-.s-details .details-box .details-quote p {
+.s-details .details-box .details-quote > p {
   margin: 0;
   font-size: 18px;
 }
