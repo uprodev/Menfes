@@ -93,13 +93,11 @@ jQuery(document).ready(function ($) {
   }
 
   if ($(".reviews-slider").length) {
-    var names = [];
-    const slides = document.querySelectorAll(".reviews-slider .swiper-slide");
-    slides.forEach((slide) => {
-      names.push(slide.getAttribute("data-title"));
+    const swiperThumbnail = new Swiper(".reviews-slider .swiper-thumbs", {
+      slidesPerView: "auto",
     });
 
-    const swiper = new Swiper(".reviews-slider .swiper", {
+    const swiper = new Swiper(".reviews-slider .swiper-main", {
       loop: true,
       spaceBetween: 0,
       speed: 1000,
@@ -108,23 +106,12 @@ jQuery(document).ready(function ($) {
         prevEl: ".reviews-slider .swiper-button-prev",
         nextEl: ".reviews-slider .swiper-button-next",
       },
+      thumbs: {
+        swiper: swiperThumbnail,
+      },
       pagination: {
         el: ".reviews-slider .swiper-pagination",
         clickable: true,
-        type: "custom",
-
-        renderCustom: function (swiper, current, total) {
-          var text = "";
-          for (let i = 0; i < total; i++) {
-            if (current == i + 1) {
-              text += '<div class="swiper-pagination-bullet swiper-pagination-bullet-active">' + names[i] + "</div>";
-            } else {
-              text += '<div class="swiper-pagination-bullet">' + names[i] + "</div>";
-            }
-          }
-
-          return text;
-        },
       },
       breakpoints: {
         768: {
@@ -142,20 +129,26 @@ jQuery(document).ready(function ($) {
   }
 
   if ($(".logos-slider").length) {
-    const logosSwiper = new Swiper(".logos-slider .swiper", {
-      loop: true,
-      spaceBetween: 30,
-      speed: 10000,
-      slidesPerView: "auto",
-      autoplay: {
-        delay: 0,
-      },
-      breakpoints: {
-        768: {
-          spaceBetween: 55,
+    const logoSlides = $(".logos-slider .swiper-slide").length;
+
+    if ($(".logos-slider .swiper-slide").length > 4) {
+      const logosSwiper = new Swiper(".logos-slider .swiper", {
+        loop: true,
+        spaceBetween: 30,
+        speed: 10000,
+        slidesPerView: "auto",
+        autoplay: {
+          delay: 0,
         },
-      },
-    });
+        breakpoints: {
+          768: {
+            spaceBetween: 55,
+          },
+        },
+      });
+    } else {
+      $(".logos-slider .swiper").addClass("no-slider");
+    }
   }
 
   if ($(".news-slider").length) {
