@@ -6,7 +6,9 @@
 		</figure>
 	<?php endif ?>
 	
-	<h3><?= get_field('title') ?: get_the_title() ?></h3>
+	<a href="<?php the_permalink() ?>">
+		<h3><?= get_field('title') ?: get_the_title() ?></h3>
+	</a>
 	
 	<?php the_field('text') ?>
 

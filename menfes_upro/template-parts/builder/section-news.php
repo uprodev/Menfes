@@ -18,7 +18,7 @@ if($args['row']):
 	?>
 
 	<?php if($wp_query->have_posts()): ?>
-		<section class="section s-news">
+		<section class="section s-news"<?php if($id) echo ' id="' . $id . '"' ?>>
 			<div class="container-fluid">
 				<div class="d-lg-flex justify-content-between align-items-end">
 					<div class="text">

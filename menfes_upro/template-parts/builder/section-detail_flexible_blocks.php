@@ -3,7 +3,7 @@ if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
 	<?php if ($content): ?>
-		<section class="section s-details">
+		<section class="section s-details"<?php if($id) echo ' id="' . $id . '"' ?>>
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-lg-10 col-xl-8">

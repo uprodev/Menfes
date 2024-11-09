@@ -2,7 +2,7 @@
 if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
-	<section class="banner-page">
+	<section class="banner-page"<?php if($id) echo ' id="' . $id . '"' ?>>
 
 		<?php if ($image): ?>
 			<div class="banner-image">

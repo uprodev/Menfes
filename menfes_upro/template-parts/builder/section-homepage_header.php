@@ -2,7 +2,7 @@
 if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
-	<section class="banner-home">
+	<section class="banner-home"<?php if($id) echo ' id="' . $id . '"' ?>>
 
 		<?php if ($image): ?>
 			<div class="banner-image">
@@ -54,30 +54,42 @@ if($args['row']):
 						<div class="swiper-wrapper">
 
 							<?php foreach ($usps as $item): ?>
-								<div class="swiper-slide">
-									<div class="item">
-										<span class="icon">
 
-											<?php if ($item['icon_or_image'] == 'Icon' && $item['icon']): ?>
-												<i class="<?= $item['icon'] ?>"></i>
-											<?php endif ?>
-
-											<?php if ($item['icon_or_image'] == 'Image' && $item['image']): ?>
-												<?= wp_get_attachment_image($item['image']['ID'], 'full') ?>
-											<?php endif ?>
-
-										</span>
-										
-										<?php if ($item['title']): ?>
-											<h5><?= $item['title'] ?></h5>
+								<?php if ($item['link']): ?>
+									<a href="<?= $item['link']['url'] ?>" class="swiper-slide"<?php if($item['link']['target']) echo ' target="_blank"' ?>>
+									<?php else: ?>
+										<div class="swiper-slide">
 										<?php endif ?>
-										
-										<?= $item['text'] ?>
 
+										<div class="item">
+											<span class="icon">
+
+												<?php if ($item['icon_or_image'] == 'Icon' && $item['icon']): ?>
+													<i class="<?= $item['icon'] ?>"></i>
+												<?php endif ?>
+
+												<?php if ($item['icon_or_image'] == 'Image' && $item['image']): ?>
+													<?= wp_get_attachment_image($item['image']['ID'], 'full') ?>
+												<?php endif ?>
+
+											</span>
+
+											<?php if ($item['title']): ?>
+												<h5><?= $item['title'] ?></h5>
+											<?php endif ?>
+
+											<?= $item['text'] ?>
+
+										</div>
+
+										<?php if ($item['link']): ?>
+										</a>
+									<?php else: ?>
 									</div>
-								</div>
+								<?php endif ?>
+
 							<?php endforeach ?>
-							
+
 						</div>
 					</div>
 				</div>

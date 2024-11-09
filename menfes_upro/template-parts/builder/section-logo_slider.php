@@ -5,7 +5,7 @@ if($args['row']):
 	<?php $items = $default_custom == 'Custom' ? $custom : get_field('slider_l', 'option') ;
 	if (is_array($items) && checkArrayForValues($items)): ?>
 
-		<section class="section s-logos-slider">
+		<section class="section s-logos-slider"<?php if($id) echo ' id="' . $id . '"' ?>>
 			<div class="container-fluid">
 
 				<?php if ($title): ?>
@@ -20,27 +20,35 @@ if($args['row']):
 				<div class="swiper">
 					<div class="swiper-wrapper">
 
-						<?php foreach($items as $item): ?>
+						<?php 
+						$loops = count($items) > 4 ? 2 : 1;
 
-							<?php if ($item['logo_image']): ?>
-								<div class="swiper-slide">
-									<figure>
+						for ($i = 1 ; $i <= $loops; $i++) { ?>
+							
+							<?php foreach($items as $item): ?>
 
-										<?php if ($item['logo_link']): ?>
-											<a href="<?= $item['logo_link']['url'] ?>" class="btn btn--secondary btn--with-arrow"<?php if($item['logo_link']['target']) echo ' target="_blank"' ?>>
+								<?php if ($item['logo_image']): ?>
+									<div class="swiper-slide">
+										<figure>
+
+											<?php if ($item['logo_link']): ?>
+												<a href="<?= $item['logo_link']['url'] ?>" class="btn btn--secondary btn--with-arrow"<?php if($item['logo_link']['target']) echo ' target="_blank"' ?>>
+												<?php endif ?>
+
+												<?= wp_get_attachment_image($item['logo_image']['ID'], 'full') ?>
+												
+												<?php if ($item['logo_link']): ?>
+												</a>
 											<?php endif ?>
 
-											<?= wp_get_attachment_image($item['logo_image']['ID'], 'full') ?>
-											
-											<?php if ($item['logo_link']): ?>
-											</a>
-										<?php endif ?>
+										</figure>
+									</div>
+								<?php endif ?>
 
-									</figure>
-								</div>
-							<?php endif ?>
+							<?php endforeach; ?>
 
-						<?php endforeach; ?>
+						<?php }
+						?>
 
 					</div>
 				</div>

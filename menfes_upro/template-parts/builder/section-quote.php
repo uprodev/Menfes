@@ -2,7 +2,7 @@
 if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
-	<section class="section s-quote">
+	<section class="section s-quote"<?php if($id) echo ' id="' . $id . '"' ?>>
 		<div class="container-fluid">
 			<div class="wrapper text-center">
 				<div class="text">

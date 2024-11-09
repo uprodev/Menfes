@@ -3,7 +3,7 @@ if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
 	<?php 
-	$post_type = 'blog';
+	$post_type = 'ervaring';
 	$args = array(
 		'post_type' => $post_type, 
 		'posts_per_page' => 6, 
@@ -18,13 +18,18 @@ if($args['row']):
 	?>
 
 	<?php if($wp_query->have_posts()): ?>
-		<section class="section s-blog-list"<?php if($id) echo ' id="' . $id . '"' ?>>
+		<section class="section s-services-list"<?php if($id) echo ' id="' . $id . '"' ?>>
 			<div class="container-fluid">
-				<div class="row" id="response_blog">
+
+				<?php if ($title): ?>
+					<h2><?= $title ?></h2>
+				<?php endif ?>
+
+				<div class="row" id="response_ervaring">
 
 					<?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
-						<div class="col-md-6 col-lg-4">
-							<?php get_template_part('parts/content', $post_type) ?>
+						<div class="col-md-6">
+							<?php get_template_part('parts/content', $post_type . '_2') ?>
 						</div>
 					<?php endwhile; ?>
 
@@ -34,10 +39,10 @@ if($args['row']):
 					<script> var this_page = 1; </script>
 
 					<div class="btn-wrap text-center">
-						<button type="button" class="btn btn-primary load_blog" data-param-posts='<?php echo serialize($wp_query->query_vars); ?>' data-max-pages='<?php echo $wp_query->max_num_pages; ?>'><?= $load_more_button_text ?></button>
+						<button type="button" class="btn btn-primary load_ervaring" data-param-posts='<?php echo serialize($wp_query->query_vars); ?>' data-max-pages='<?php echo $wp_query->max_num_pages; ?>'><?= $load_more_button_text ?></button>
 					</div>
 				<?php endif ?>
-				
+
 			</div>
 		</section>
 		<?php 
