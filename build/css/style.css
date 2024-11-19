@@ -972,6 +972,9 @@ figure {
   border-radius: 100%;
   margin: 0 3px 0 0;
   border: 2px solid var(--bs-primary);
+  -o-object-fit: cover;
+  object-fit: cover;
+  background: var(--bs-primary);
 }
 .lang-wrapper .lang-toggler.active i {
   transform: scaleY(-1);
@@ -997,9 +1000,16 @@ figure {
   justify-content: center;
   width: 34px;
   height: 34px;
-  background-color: #fff;
-  border: 1px solid var(--bs-primary);
+  background-color: var(--bs-primary);
   border-radius: 100%;
+}
+.lang-wrapper ul a img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 1px solid var(--bs-primary);
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 .navbar-toggler {
   align-self: center;
@@ -1206,12 +1216,12 @@ figure {
   .lang-wrapper ul {
     right: auto;
     bottom: auto;
-    left: 50%;
-    transform: translateX(-60%);
+    left: -12px;
     top: 100%;
     width: auto;
     background-color: #fff;
     border-radius: 15px;
+    padding: 16px;
   }
 }
 @media (min-width: 1200px) {
@@ -1309,7 +1319,7 @@ figure {
 .footer .list-inline a {
   color: #cbd8d7;
 }
-.footer .list-inline .list-inline-item:last-child a {
+.footer .list-inline a span {
   text-decoration: underline;
 }
 @media (min-width: 992px) {
@@ -2156,6 +2166,11 @@ figure {
   width: fit-content;
   height: auto;
 }
+.s-logos-slider a,
+.s-logos-slider figure {
+  display: block;
+}
+.s-logos-slider a img,
 .s-logos-slider figure img {
   display: block;
   height: 41px;
@@ -2186,21 +2201,26 @@ figure {
   }
   .s-logos-slider .swiper.no-slider .swiper-slide {
     padding: 10px 20px;
-    width: auto;
-    flex: 1 1 auto;
+    width: -moz-max-content;
+    width: max-content;
   }
 }
 @media (min-width: 992px) {
   .s-logos-slider h4 {
     margin: 6px 0 40px;
   }
+  .s-logos-slider a,
   .s-logos-slider figure {
     display: flex;
     align-items: center;
     height: 100%;
   }
+  .s-logos-slider a img,
   .s-logos-slider figure img {
+    width: auto;
     height: auto;
+    max-height: 60px;
+    max-width: 100%;
   }
 }
 .s-faq .image {
@@ -2436,8 +2456,8 @@ figure {
 }
 @media (min-width: 1200px) {
   .s-text-images {
-    margin: 120px 0 0;
-    padding: 0 0 113px;
+    margin: 120px 0 50px;
+    padding: 0 0 53px;
   }
   .s-text-images .container-fluid {
     margin: 0 -30px;
@@ -2457,10 +2477,15 @@ figure {
   }
 }
 @media (min-width: 1420px) {
+  .s-text-images {
+    overflow: visible;
+  }
   .s-text-images:before {
-    height: 100%;
+    height: auto;
+    top: -100px;
+    bottom: 0;
     padding: 0;
-    background-size: cover;
+    background-position: center top;
   }
   .s-text-images .container-fluid {
     margin: 0;
@@ -3076,6 +3101,9 @@ figure {
   flex-direction: column;
   height: 100%;
 }
+.s-services-list .item a {
+  text-decoration: none;
+}
 .s-services-list .item figure {
   width: 109px;
   height: 109px;
@@ -3098,6 +3126,16 @@ figure {
 }
 .s-services-list .item p {
   margin: 0 0 20px;
+}
+.s-services-list .item p + p {
+  margin-top: -10px;
+}
+.s-services-list .item p a {
+  text-decoration: underline;
+  color: inherit;
+}
+.s-services-list .item p a:hover {
+  text-decoration: none;
 }
 .s-services-list .item .item-footer {
   margin-top: auto;
@@ -3141,6 +3179,9 @@ figure {
     max-width: 447px;
     line-height: 31px;
     margin: 0 0 43px;
+  }
+  .s-services-list .item p + p {
+    margin-top: -23px;
   }
   .s-services-list .item .item-footer .item-logo {
     width: auto;
