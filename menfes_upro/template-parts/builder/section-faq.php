@@ -3,7 +3,7 @@ if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
 	<?php if (is_array($items) && checkArrayForValues($items)): ?>
-	<section class="section s-faq">
+	<section class="section s-faq"<?php if($id) echo ' id="' . $id . '"' ?>>
 
 		<?php if ($image): ?>
 			<div class="image">

@@ -1,4 +1,4 @@
-<div class="swiper-slide"<?php if($args['slider_navigation_text']) echo ' data-title="' . $args['slider_navigation_text'] . '"' ?>>
+<div class="swiper-slide">
 	<div class="row">
 		<div class="col-md-6 offset-lg-1">
 			<div class="text">

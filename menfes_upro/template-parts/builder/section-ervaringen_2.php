@@ -9,22 +9,22 @@ if($args['row']):
 		'posts_per_page' => 6, 
 	);
 
-	if($default_custom == 'Custom'){
-		$args['post__in'] = wp_list_pluck($custom, 'ID');
+	if($default_custom == 'Relation'){
+		$args['post__in'] = wp_list_pluck($relation, 'ID');
 		$args['orderby'] = 'post__in';
 	}
 
 	$wp_query = new WP_Query($args);
 	?>
 
-	<?php if($wp_query->have_posts()): ?>
-		<section class="section s-services-list">
-			<div class="container-fluid">
+	<section class="section s-services-list"<?php if($id) echo ' id="' . $id . '"' ?>>
+		<div class="container-fluid">
 
-				<?php if ($title): ?>
-					<h2><?= $title ?></h2>
-				<?php endif ?>
+			<?php if ($title): ?>
+				<h2><?= $title ?></h2>
+			<?php endif ?>
 
+			<?php if($wp_query->have_posts() && ($default_custom == 'Default') || $default_custom == 'Relation'): ?>
 				<div class="row" id="response_ervaring">
 
 					<?php while ($wp_query->have_posts()): $wp_query->the_post(); ?>
@@ -43,11 +43,24 @@ if($args['row']):
 					</div>
 				<?php endif ?>
 
-			</div>
-		</section>
-		<?php 
-	endif;
-	wp_reset_query(); 
-	?>
+				<?php 
+			endif;
+			wp_reset_query(); 
+			?>
+
+			<?php if ($default_custom == 'Custom' && is_array($custom) && checkArrayForValues($custom)): ?>
+				<div class="row">
+
+					<?php foreach ($custom as $item): ?>
+						<div class="col-md-6">
+							<?php get_template_part('parts/content', $post_type . '_2_custom', ['reviewer' => $item['reviewer'], 'title' => $item['title'], 'text' => $item['text'], 'logo' => $item['logo'], 'name' => $item['name'], 'function' => $item['function'], 'link' => $item['link']]) ?>
+						</div>
+					<?php endforeach ?>
+
+				</div>
+			<?php endif ?>
+
+		</div>
+	</section>
 
 	<?php endif; ?>

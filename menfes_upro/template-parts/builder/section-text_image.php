@@ -2,7 +2,7 @@
 if($args['row']):
 	foreach($args['row'] as $key=>$arg) $$key = $arg; ?>
 
-	<section class="section s-text-image <?= $image_position == 'Right' ? 's-text-image--img-right' : 's-text-image--img-left' ?>">
+	<section class="section s-text-image <?= $image_position == 'Right' ? 's-text-image--img-right' : 's-text-image--img-left' ?>"<?php if($id) echo ' id="' . $id . '"' ?>>
 
 		<?php if ($image): ?>
 			<div class="image">

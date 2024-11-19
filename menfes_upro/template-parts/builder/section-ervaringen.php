@@ -28,10 +28,10 @@ if($args['row']):
 	?>
 
 	<?php if ($is_posts || $is_custom): ?>
-		<section class="section s-reviews">
+		<section class="section s-reviews"<?php if($id) echo ' id="' . $id . '"' ?>>
 			<div class="container-fluid">
 				<div class="reviews-slider">
-					<div class="swiper">
+					<div class="swiper swiper-main">
 						<div class="swiper-wrapper">
 
 							<?php foreach ($posts as $post): ?>
@@ -40,7 +40,7 @@ if($args['row']):
 								foreach ($fields as $field){
 									$$field = $is_posts ? get_field($field, $post->ID) : $post[$field];
 								}
-								get_template_part('parts/content', 'ervaring', ['subtitle' => $subtitle, 'title' => $title, 'text' => $text, 'logo' => $logo, 'name' => $name, 'function' => $function, 'reviewer' => $reviewer, 'slider_navigation_text' => $slider_navigation_text]);
+								get_template_part('parts/content', 'ervaring', ['subtitle' => $subtitle, 'title' => $title, 'text' => $text, 'logo' => $logo, 'name' => $name, 'function' => $function, 'reviewer' => $reviewer]);
 								?>
 							<?php endforeach ?>
 
@@ -48,7 +48,18 @@ if($args['row']):
 					</div>
 					<div class="swiper-controls">
 						<div class="swiper-button-prev"><i class="fa-regular fa-chevron-left"></i></div>
-						<div class="swiper-pagination"></div>
+						<div class="swiper-pagination d-lg-none"></div>
+						<div class="d-none d-lg-block swiper-thumbs-wrapper">
+							<div class="swiper swiper-thumbs">
+								<div class="swiper-wrapper">
+
+									<?php foreach ($posts as $post): ?>
+										<div class="swiper-slide"><?= $slider_navigation_text ?></div>
+									<?php endforeach ?>
+
+								</div>
+							</div>
+						</div>
 						<div class="swiper-button-next"><i class="fa-regular fa-chevron-right"></i></div>
 					</div>
 				</div>
