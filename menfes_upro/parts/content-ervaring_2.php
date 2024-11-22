@@ -12,6 +12,10 @@
 	
 	<?php the_field('text') ?>
 
+	<p>
+		<a href="<?php the_permalink() ?>"><?php _e('Lees meer', 'Menfes') ?></a>
+	</p>
+
 	<div class="item-footer d-md-flex align-items-center">
 
 		<?php if ($field = get_field('logo')): ?>

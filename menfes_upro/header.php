@@ -15,7 +15,11 @@
 
         <?php if ($field = get_field('full_logo_h', 'option')): ?>
           <a class="navbar-brand" href="<?= get_home_url() ?>">
-            <?= wp_get_attachment_image($field['ID'], 'full') ?>
+            <?php if (pathinfo($field['url'])['extension'] == 'svg'): ?>
+              <img src="<?= $field['url'] ?>" alt="<?= $field['alt'] ?>">
+            <?php else: ?>
+              <?= wp_get_attachment_image($field['ID'], 'full') ?>
+            <?php endif ?>
           </a>
         <?php endif ?>
         

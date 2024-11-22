@@ -116,7 +116,8 @@ function custom_language_switcher(){
 
             <?php
             foreach($languages as $index => $language){
-                if($language['active'] === '1') echo '<button class="lang-toggler"><img src="' . $language['country_flag_url'] . '" /><i class="fa-regular fa-chevron-down"></i></button>';
+                $flag_url = $language['code'] == 'nl' ? get_stylesheet_directory_uri() . '/images/flag-nl.png' : $language['country_flag_url'];
+                if($language['active'] === '1') echo '<button class="lang-toggler"><img src="' . $flag_url . '" /><i class="fa-regular fa-chevron-down"></i></button>';
             }
             ?>
 
@@ -124,7 +125,8 @@ function custom_language_switcher(){
 
                 <?php
                 foreach($languages as $index => $language){
-                    if($language['active'] !== '1') echo '<li><a href="' . $language['url'] . '"><img src="' . $language['country_flag_url'] . '" alt="" /></a></li>';
+                    $flag_url = $language['code'] == 'nl' ? get_stylesheet_directory_uri() . '/images/flag-nl.png' : $language['country_flag_url'];
+                    if($language['active'] !== '1') echo '<li><a href="' . $language['url'] . '"><img src="' . $flag_url . '" alt="" /></a></li>';
                 }
                 ?>
 

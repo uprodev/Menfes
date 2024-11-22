@@ -388,13 +388,13 @@ figure {
   --bs-btn-color: #fff;
   --bs-btn-bg: var(--bs-primary);
   --bs-btn-border-color: var(--bs-primary);
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: var(--bs-dark);
-  --bs-btn-hover-border-color: var(--bs-primary);
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: var(--bs-terciary);
+  --bs-btn-hover-border-color: var(--bs-terciary);
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: var(--bs-primary);
-  --bs-btn-active-border-color: var(--bs-primary);
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: var(--bs-terciary);
+  --bs-btn-active-border-color: var(--bs-terciary);
   --bs-btn-active-shadow: none;
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: var(--bs-primary);
@@ -403,12 +403,18 @@ figure {
 .btn i {
   margin-left: 10px;
 }
-.link-content {
+.link-content,
+.s-services-list .item p a {
   color: var(--bs-primary);
-  text-decoration: underline;
-}
-.link-content:hover {
   text-decoration: none;
+  line-height: 1.2;
+  border-bottom: 1px solid var(--bs-primary);
+}
+.link-content:hover,
+.s-services-list .item p a:hover {
+  color: var(--bs-dark);
+  text-decoration: none;
+  border-color: transparent;
 }
 .buttons {
   display: flex;
@@ -972,6 +978,9 @@ figure {
   border-radius: 100%;
   margin: 0 3px 0 0;
   border: 2px solid var(--bs-primary);
+  -o-object-fit: cover;
+  object-fit: cover;
+  background: var(--bs-primary);
 }
 .lang-wrapper .lang-toggler.active i {
   transform: scaleY(-1);
@@ -997,9 +1006,16 @@ figure {
   justify-content: center;
   width: 34px;
   height: 34px;
-  background-color: #fff;
-  border: 1px solid var(--bs-primary);
+  background-color: var(--bs-primary);
   border-radius: 100%;
+}
+.lang-wrapper ul a img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 2px solid var(--bs-primary);
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 .navbar-toggler {
   align-self: center;
@@ -1206,12 +1222,12 @@ figure {
   .lang-wrapper ul {
     right: auto;
     bottom: auto;
-    left: 50%;
-    transform: translateX(-60%);
+    left: -12px;
     top: 100%;
     width: auto;
     background-color: #fff;
     border-radius: 15px;
+    padding: 16px;
   }
 }
 @media (min-width: 1200px) {
@@ -1309,7 +1325,7 @@ figure {
 .footer .list-inline a {
   color: #cbd8d7;
 }
-.footer .list-inline .list-inline-item:last-child a {
+.footer .list-inline a span {
   text-decoration: underline;
 }
 @media (min-width: 992px) {
@@ -2122,6 +2138,8 @@ figure {
   }
   .s-reviews .swiper-thumbs .swiper-slide:hover {
     opacity: 1;
+    background-color: var(--bs-light);
+    font-weight: 500;
   }
   .s-reviews .swiper-thumbs .swiper-slide.swiper-slide-thumb-active {
     background-color: var(--bs-terciary);
@@ -2156,6 +2174,11 @@ figure {
   width: fit-content;
   height: auto;
 }
+.s-logos-slider a,
+.s-logos-slider figure {
+  display: block;
+}
+.s-logos-slider a img,
 .s-logos-slider figure img {
   display: block;
   height: 41px;
@@ -2186,26 +2209,32 @@ figure {
   }
   .s-logos-slider .swiper.no-slider .swiper-slide {
     padding: 10px 20px;
-    width: auto;
-    flex: 1 1 auto;
+    width: -moz-max-content;
+    width: max-content;
   }
 }
 @media (min-width: 992px) {
   .s-logos-slider h4 {
     margin: 6px 0 40px;
   }
+  .s-logos-slider a,
   .s-logos-slider figure {
     display: flex;
     align-items: center;
     height: 100%;
   }
+  .s-logos-slider a img,
   .s-logos-slider figure img {
+    width: auto;
     height: auto;
+    max-height: 60px;
+    max-width: 100%;
   }
 }
 .s-faq .image {
   position: relative;
   height: 298px;
+  margin: 0 -35px;
 }
 .s-faq .image:after {
   content: "";
@@ -2261,8 +2290,8 @@ figure {
     height: auto;
     padding-top: 60%;
     left: 0;
-    top: 125px;
-    transform: none;
+    top: 100%;
+    transform: translateY(-40%);
     background-size: 100% auto;
   }
   .s-faq .image figure {
@@ -2277,13 +2306,12 @@ figure {
     position: relative;
   }
   .s-faq .image {
-    position: absolute;
-    left: auto;
-    top: 110px;
-    right: 0;
     height: 470px;
     width: 300px;
     transform: none;
+    margin: 60px 0 0;
+    left: 0;
+    float: right;
   }
   .s-faq .image:after {
     background: url(../images/bgi/form9.svg) right 0 / auto 100% no-repeat;
@@ -2295,6 +2323,7 @@ figure {
     top: auto;
     bottom: 0;
     padding: 0;
+    transform: none;
   }
   .s-faq .image figure {
     -webkit-mask: url(../images/bgi/mask1.svg) 0 0 / auto 100% no-repeat;
@@ -2328,10 +2357,10 @@ figure {
 }
 @media (min-width: 1200px) {
   .s-faq .image {
-    width: 485px;
+    width: 450px;
   }
   .s-faq .image:after {
-    right: 365px;
+    right: 325px;
   }
   .s-faq .accordion {
     max-width: 520px;
@@ -2436,8 +2465,8 @@ figure {
 }
 @media (min-width: 1200px) {
   .s-text-images {
-    margin: 120px 0 0;
-    padding: 0 0 113px;
+    margin: 120px 0 50px;
+    padding: 0 0 53px;
   }
   .s-text-images .container-fluid {
     margin: 0 -30px;
@@ -2457,10 +2486,15 @@ figure {
   }
 }
 @media (min-width: 1420px) {
+  .s-text-images {
+    overflow: visible;
+  }
   .s-text-images:before {
-    height: 100%;
+    height: auto;
+    top: -100px;
+    bottom: 0;
     padding: 0;
-    background-size: cover;
+    background-position: center top;
   }
   .s-text-images .container-fluid {
     margin: 0;
@@ -2859,6 +2893,7 @@ figure {
 .s-text-image .image {
   position: relative;
   height: 298px;
+  margin: 0 -35px;
 }
 .s-text-image .image:after {
   content: "";
@@ -2914,8 +2949,8 @@ figure {
     height: auto;
     padding-top: 60%;
     left: 0;
-    top: 130px;
-    transform: none;
+    top: 100%;
+    transform: translateY(-40%);
     background-size: 100% auto;
   }
   .s-text-image .image figure {
@@ -2933,11 +2968,11 @@ figure {
     min-height: 470px;
   }
   .s-text-image .image {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     height: 470px;
     width: 300px;
+    transform: none;
+    margin: 60px 0 0;
+    left: 0;
   }
   .s-text-image .image:after {
     width: 100vw;
@@ -2946,13 +2981,16 @@ figure {
     top: auto;
     bottom: 0;
     padding: 0;
+    transform: none;
   }
   .s-text-image .image figure {
     z-index: 0;
   }
+  .s-text-image--img-right .row {
+    flex-direction: row-reverse;
+  }
   .s-text-image--img-right .image {
-    left: auto;
-    right: 0;
+    float: right;
   }
   .s-text-image--img-right .image:after {
     background: url(../images/bgi/form9.svg) right 0 / auto 100% no-repeat;
@@ -2964,8 +3002,7 @@ figure {
     mask: url(../images/bgi/mask1.svg) 0 0 / auto 100% no-repeat;
   }
   .s-text-image--img-left .image {
-    right: auto;
-    left: 0;
+    float: left;
   }
   .s-text-image--img-left .image:after {
     background: url(../images/bgi/form14.svg) left 0 / auto 100% no-repeat;
@@ -2975,9 +3012,6 @@ figure {
   .s-text-image--img-left .image figure {
     -webkit-mask: url(../images/bgi/mask1-1.svg) right 0 / auto 100% no-repeat;
     mask: url(../images/bgi/mask1-1.svg) right 0 / auto 100% no-repeat;
-  }
-  .s-text-image--img-left .row {
-    justify-content: flex-end;
   }
 }
 @media (min-width: 992px) {
@@ -3009,13 +3043,19 @@ figure {
 }
 @media (min-width: 1200px) {
   .s-text-image .image {
-    width: 485px;
+    width: 450px;
   }
   .s-text-image--img-right .image:after {
-    right: 365px;
+    right: 325px;
+  }
+  .s-text-image--img-right .col-md-6.p-0 {
+    padding-right: 12px !important;
   }
   .s-text-image--img-left .image:after {
-    left: 365px;
+    left: 325px;
+  }
+  .s-text-image--img-left .col-md-6.p-0 {
+    padding-left: 12px !important;
   }
   .s-text-image .text {
     padding: 35px 0 0;
@@ -3076,6 +3116,9 @@ figure {
   flex-direction: column;
   height: 100%;
 }
+.s-services-list .item a {
+  text-decoration: none;
+}
 .s-services-list .item figure {
   width: 109px;
   height: 109px;
@@ -3098,6 +3141,13 @@ figure {
 }
 .s-services-list .item p {
   margin: 0 0 20px;
+}
+.s-services-list .item p + p {
+  margin-top: -10px;
+}
+.s-services-list .item p a {
+  color: var(--bs-body-color);
+  border-color: var(--bs-body-color);
 }
 .s-services-list .item .item-footer {
   margin-top: auto;
@@ -3141,6 +3191,9 @@ figure {
     max-width: 447px;
     line-height: 31px;
     margin: 0 0 43px;
+  }
+  .s-services-list .item p + p {
+    margin-top: -23px;
   }
   .s-services-list .item .item-footer .item-logo {
     width: auto;

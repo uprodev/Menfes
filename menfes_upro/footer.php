@@ -5,12 +5,16 @@
     <div class="row">
 
       <?php if (($field = get_field('contact_info_f', 'option')) && is_array($field) && checkArrayForValues($field)): ?>
-      <div class="col-md-6 col-lg-3">
+      <div class="col-md-6 col-lg-3 col-xl-2">
 
         <?php if ($field['logo']): ?>
           <div class="footer-logo">
             <a href="<?= get_home_url() ?>">
-              <?= wp_get_attachment_image($field['logo']['ID'], 'full') ?>
+              <?php if (pathinfo($field['logo']['url'])['extension'] == 'svg'): ?>
+                <img src="<?= $field['logo']['url'] ?>" alt="<?= $field['logo']['alt'] ?>">
+              <?php else: ?>
+                <?= wp_get_attachment_image($field['logo']['ID'], 'full') ?>
+              <?php endif ?>
             </a>
           </div>
         <?php endif ?>
@@ -70,7 +74,7 @@
 </div>
 <?php endif ?>
 
-<div class="col-lg-6">
+<div class="col-lg-6 col-xl-7">
   <nav class="footer-menu">
     <div class="row">
 
@@ -153,13 +157,11 @@
     <?php foreach ($field as $item): ?>
       <?php if ($item['link']): ?>
         <li class="list-inline-item">
-          <a href="<?= $item['link']['url'] ?>"<?php if($item['link']['target']) echo ' target="_blank"' ?>><?= $item['link']['title'] ?></a>
+          <a href="<?= $item['link']['url'] ?>"<?php if($item['link']['target']) echo ' target="_blank"' ?>><?= html_entity_decode($item['link']['title']) ?></a>
         </li>
       <?php endif ?>
     <?php endforeach ?>
     
-    <li class="list-inline-item"><a href="#"><?php _e('Website door', 'Genex') ?></a></li>
-    <li class="list-inline-item"><a href="#"><?php _e('The DISTRIKT', 'Genex') ?></a></li>
   </ul>
 <?php endif ?>
 
